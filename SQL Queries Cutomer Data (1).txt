@@ -1,0 +1,187 @@
+﻿--which is the least purchased color in couches? SELECT distinct 
+min(product_color)AS less_number_of_couches 
+FROM `gosegos-first-project.customer_data.customer_purchase` where product='couch'; 
+*Results
+
+
+Row
+	less_number_of_couches
+	
+
+	1
+	black
+	
+
+	
+
+-- What is the most purchased color in couches? 
+SELECT product_color,count(product) AS Total_number_color_couch  FROM `gosegos-first-project.customer_data.customer_purchase`  where product = 'couch' and product is not null group by product_color 
+order by total_number_color_couch DESC; 
+
+
+*Results
+
+
+Row
+	product_color
+	Total_number_color_couch
+	
+
+	1
+	grey
+	3
+	
+
+	2
+	white
+	2
+	
+
+	3
+	blue
+	1
+	
+
+	4
+	purple
+	1
+	
+
+	5
+	brown
+	1
+	
+
+	6
+	black
+	1
+	
+
+	
+
+--What is the total revenue for each product? 
+SELECT sum(revenue) as Total_price_of_products, product  FROM `gosegos-first-project.customer_data.customer_purchase`  where product is not null 
+group by product 
+order by total_price_of_products desc; 
+*Results 
+
+
+Row
+	Total_price_of_products
+	product
+	
+
+	1
+	9000.0
+	couch
+	
+
+	2
+	808.65000000000009
+	rug
+	
+
+	3
+	799.99
+	bed
+	
+
+	4
+	509.84999999999997
+	desk
+	
+
+	5
+	234.5
+	chair
+	
+
+	6
+	229.95
+	lamp
+	
+
+	7
+	199.95
+	mirror
+	
+
+	8
+	111.92
+	fan
+	
+
+	9
+	58.89
+	bookcase
+	
+
+	10
+	19.98
+	vase
+	
+
+	
+
+--Which product was most sold? 
+SELECT sum(purchase_size) as the_most_sold_item, product  FROM `gosegos-first-project.customer_data.customer_purchase`  where product is not null  
+group by product 
+order by the_most_sold_item desc; 
+
+
+*Results
+
+
+Row
+	the_most_sold_item
+	product
+	
+
+	1
+	9
+	couch
+	
+
+	2
+	9
+	rug
+	
+
+	3
+	8
+	fan
+	
+
+	4
+	5
+	lamp
+	
+
+	5
+	3
+	desk
+	
+
+	6
+	2
+	vase
+	
+
+	7
+	1
+	bed
+	
+
+	8
+	1
+	mirror
+	
+
+	9
+	1
+	bookcase
+	
+
+	10
+	1
+	chair
